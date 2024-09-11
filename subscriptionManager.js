@@ -1,21 +1,20 @@
-import fs from 'fs'; // Import the 'fs' module for file system operations
-import path from 'path'; // Import 'path' module to handle and manipulate file paths
-
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { fileURLToPath } from 'url'; // Import for converting module URL to file path
+import { dirname, join } from 'path'; // Import for handling file paths
+import { promises as fs } from 'fs'; // Import fs.promises for asynchronous file operations
 
 // Define the path to the 'subscriptions.json' file
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const subscriptionsFile = path.join(__dirname, 'subscriptions.json');
+const __dirname = dirname(fileURLToPath(import.meta.url)); // Get the directory name of the current module
+const subscriptionsFile = join(__dirname, 'subscriptions.json'); // Join directory name with the file name
 
 // Load existing subscriptions from the 'subscriptions.json' file asynchronously
 let subscriptions;
 
 try {
+  // Read the file asynchronously with UTF-8 encoding
   const data = await fs.readFile(subscriptionsFile, 'utf-8');
-  subscriptions = JSON.parse(data);
+  subscriptions = JSON.parse(data); // Parse the file content to JSON
 } catch (err) {
-  console.error(`Error reading subscriptions file: ${err.message}`);
+  console.error(`Error reading subscriptions file: ${err.message}`); // Log any errors that occur
 }
 
 // Retrieve the list of calendar subscriptions
@@ -39,14 +38,14 @@ async function removeSubscription(url) {
 async function updateSubscription(oldUrl, newUrl) {
   const index = subscriptions.calendars.findIndex((calendar) => calendar.url === oldUrl); // Find the index of the calendar with the old URL
   if (index !== -1) { // If a matching URL is found
-    subscriptions.calendars[index].url = newUrl; // update the URL
+    subscriptions.calendars[index].url = newUrl; // Update the URL
     await saveSubscriptions(); // Save the updated subscriptions list to the file
   }
 }
 
 // Save the updated subscriptions to the 'subscriptions.json' file
 async function saveSubscriptions() { 
-  fs.writeFileSync(subscriptionsFile, JSON.stringify(subscriptions, null, 2)); // Write the updated 'subscriptions' object to the file, (with indentation for readability)
+  await fs.writeFile(subscriptionsFile, JSON.stringify(subscriptions, null, 2)); // Write the updated 'subscriptions' object to the file asynchronously, with indentation for readability
 }
 
 // Export the subscription management functions for use in other parts of the application
