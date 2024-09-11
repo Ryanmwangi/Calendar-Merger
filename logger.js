@@ -1,4 +1,4 @@
-const winston = require('winston'); // Import the winston logging library
+import winston from 'winston'; // Import the winston logging library
 
 const logger = winston.createLogger({
   level: 'info', // Set default log level to 'info'

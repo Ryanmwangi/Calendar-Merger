@@ -1,5 +1,5 @@
-const cron = require('node-cron');
-const { mergeCalendars } = require('./index');
+import cron from 'node-cron';
+import { mergeCalendars } from './index.js';
 
 // Schedule the mergeCalendars function to run every 30 minutes
 cron.schedule('*/30 * * * *', async () => {

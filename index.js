@@ -15,7 +15,7 @@ const calendarUrls = [
 ];
 
 // Function to fetch, filter and merge calendar data from multiple sources
-async function mergeCalendars() {
+export async function mergeCalendars() {
     // Fetch subscriptions from the subscriptionManager
     const subscriptions = await subscriptionManager.getSubscriptions();
     const events = [];
@@ -78,7 +78,7 @@ function filterEvents(events, filter) {
   }
 
 // Function to fetch calendar data from a single URL
-async function fetchCalendarData(url) {
+export async function fetchCalendarData(url) {
     try {
       // Check if the data is already cached and return if found
       const cacheData = await readCache();
@@ -126,3 +126,4 @@ function generateCalendarFeed(events) {
 
 // Call the mergeCalendars function to generate the merged calendar feed
 mergeCalendars(); // Initiate the calendar merging process
+

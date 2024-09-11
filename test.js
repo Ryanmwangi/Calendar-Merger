@@ -1,4 +1,4 @@
-const fetchCalendarData = require('./index');
+import fetchCalendarData from './index.js';
 
 async function testCalendar() {
   const url = 'https://example.com/calendar'; 

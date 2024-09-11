@@ -1,6 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+// Define the path to the 'calendar-cache.json' file
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const cacheFile = path.join(__dirname, 'calendar-cache.json');
 
 // Function to read cache data

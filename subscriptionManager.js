@@ -1,9 +1,22 @@
-const fs = require('fs'); // Import the 'fs' module for file system operations
-const path = require('path'); // Import 'path' module to handle and manipulate file paths
+import fs from 'fs'; // Import the 'fs' module for file system operations
+import path from 'path'; // Import 'path' module to handle and manipulate file paths
 
-const subscriptionsFile = path.join(__dirname, 'subscriptions.json'); // Define the path to the 'subscriptions.json' file
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-let subscriptions = require(subscriptionsFile); // Load existing subscriptions from the 'subscriptions.json' file
+// Define the path to the 'subscriptions.json' file
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const subscriptionsFile = path.join(__dirname, 'subscriptions.json');
+
+// Load existing subscriptions from the 'subscriptions.json' file asynchronously
+let subscriptions;
+
+try {
+  const data = await fs.readFile(subscriptionsFile, 'utf-8');
+  subscriptions = JSON.parse(data);
+} catch (err) {
+  console.error(`Error reading subscriptions file: ${err.message}`);
+}
 
 // Retrieve the list of calendar subscriptions
 async function getSubscriptions() {
