@@ -1,0 +1,29 @@
+{
+  "name": "calendar-merger-js",
+  "version": "1.0.0",
+  "description": " \"A calender merger made with js\"",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryanmwangi/Calendar-Merger.git"
+  },
+  "author": "Ryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryanmwangi/Calendar-Merger/issues"
+  },
+  "homepage": "https://github.com/Ryanmwangi/Calendar-Merger#readme",
+  "dependencies": {
+    "calendar-merger-js": "file:",
+    "ical-parser": "^1.2.0",
+    "moment-timezone": "^0.5.45",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "redis": "^4.7.0",
+    "winston": "^3.14.2"
+  }
+}
