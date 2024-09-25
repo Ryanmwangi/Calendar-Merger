@@ -2,21 +2,47 @@
 <html>
 <head>
   <title>Calendar Merger</title>
-</head>
+  <link rel="stylesheet" href="styles.css"> </head>
 <body>
-  <h1>Calendar Merger</h1>
-  <div class="subscription-form">
-    <label for="subscription-url">Subscription URL:</label>
-    <input type="text" id="subscription-url">
-    <button id="add-subscription">Add Subscription</button>
-  </div>
-  <div class="subscription-list">
-    <h2>Your Subscriptions</h2>
-    <ul id="subscriptions-list"></ul>
-  </div>
-  <div class="configuration">
+  <header>
+    <h1>Calendar Merger</h1>
+  </header>
+  <main>
+    <section class="subscription-form">
+      <h2>Add Subscription</h2>
+      <form id="subscription-form">
+        <label for="subscription-url">Subscription URL:</label>
+        <input type="text" id="subscription-url" placeholder="Enter subscription URL">
+        <button type="submit">Add</button>
+      </form>
+    </section>
+    <section class="subscriptions">
+      <h2>Your Subscriptions</h2>
+      <ul id="subscriptions-list"></ul>
+    </section>
+    <section class="configuration">
+      <h2>Configuration</h2>
+      <div>
+        <label for="include-past-events">Include Past Events:</label>
+        <input type="checkbox" id="include-past-events">
       </div>
-  <div class="output">
+      <div>
+        <label for="include-future-events">Include Future Events:</label>
+        <input type="checkbox" id="include-future-events">
       </div>
+      <div>
+        <label for="timezone">Timezone:</label>
+        <select id="timezone"></select>
+      </div>
+      <div>
+        <label for="date-format">Date Format:</label>
+        <select id="date-format"></select>
+      </div>
+    </section>
+    <section class="output">
+      <h2>Merged Calendar</h2>
+      <pre id="merged-calendar-output"></pre>
+    </section>
+  </main>
 </body>
 </html>
